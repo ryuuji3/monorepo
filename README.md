@@ -6,7 +6,7 @@ A personal NX monorepo built with TypeScript, pnpm, ESLint, and Jest.
 
 | Package | Description | Documentation |
 |---------|-------------|---------------|
-| [@monorepo/utils](./packages/utils) | Common utility functions | [Docs](./packages/utils/README.md) |
+| [@monorepo/example](./packages/example) | Example package (demonstrates monorepo toolchain) | [Docs](./packages/example/README.md) |
 
 ## Quickstart
 
@@ -41,9 +41,9 @@ pnpm test
 pnpm lint
 
 # Run commands for a specific package
-pnpm exec nx build @monorepo/utils
-pnpm exec nx test @monorepo/utils
-pnpm exec nx lint @monorepo/utils
+pnpm exec nx build @monorepo/example
+pnpm exec nx test @monorepo/example
+pnpm exec nx lint @monorepo/example
 
 # Run only affected commands (since last commit)
 pnpm exec nx affected --target=build

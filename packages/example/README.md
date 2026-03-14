@@ -1,11 +1,17 @@
-# @monorepo/utils
+# @monorepo/example
 
-A collection of utility functions for common tasks.
+> ⚠️ **This is an example package.** It exists solely to demonstrate the monorepo toolchain (build, test, lint, semantic versioning, Docker). It is not intended to be published or used as a real dependency.
 
-## Installation
+A small collection of utility functions used to show how a package in this monorepo is structured.
 
-```bash
-pnpm add @monorepo/utils
+## Usage
+
+```typescript
+import { formatDate, capitalize, clamp } from '@monorepo/example';
+
+formatDate(new Date(2024, 0, 15)); // 'January 15, 2024'
+capitalize('hello');               // 'Hello'
+clamp(15, 0, 10);                  // 10
 ```
 
 ## API
@@ -20,13 +26,6 @@ Formats a `Date` object into a human-readable string.
 
 **Returns:** A formatted date string.
 
-**Example:**
-```typescript
-import { formatDate } from '@monorepo/utils';
-
-formatDate(new Date(2024, 0, 15)); // 'January 15, 2024'
-```
-
 ### `capitalize(str)`
 
 Capitalizes the first letter of a string.
@@ -35,13 +34,6 @@ Capitalizes the first letter of a string.
 - `str` - The string to capitalize
 
 **Returns:** The string with its first letter uppercased.
-
-**Example:**
-```typescript
-import { capitalize } from '@monorepo/utils';
-
-capitalize('hello'); // 'Hello'
-```
 
 ### `clamp(value, min, max)`
 
@@ -53,12 +45,3 @@ Clamps a number between a minimum and maximum value.
 - `max` - The maximum value
 
 **Returns:** The clamped number.
-
-**Example:**
-```typescript
-import { clamp } from '@monorepo/utils';
-
-clamp(15, 0, 10); // 10
-clamp(-5, 0, 10); // 0
-clamp(5, 0, 10);  // 5
-```
