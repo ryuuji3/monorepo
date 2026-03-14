@@ -1,0 +1,54 @@
+{
+  "name": "@monorepo/react-design-system",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/react-design-system/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/react-design-system",
+        "tsConfig": "packages/react-design-system/tsconfig.lib.json",
+        "packageJson": "packages/react-design-system/package.json",
+        "main": "packages/react-design-system/src/index.ts",
+        "assets": [
+          "packages/react-design-system/*.md",
+          {
+            "input": "packages/react-design-system/src/styles",
+            "output": "styles",
+            "glob": "**/*.css"
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/react-design-system/**/*.{ts,tsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/react-design-system"],
+      "options": {
+        "jestConfig": "packages/react-design-system/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional-commits",
+        "tagPrefix": "v",
+        "commitMessageFormat": "chore(release): {version} [skip ci]",
+        "push": true,
+        "pushToRemote": "origin",
+        "trackDeps": true,
+        "skipRootChangelog": false
+      }
+    }
+  }
+}
