@@ -11,10 +11,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  main:
+  prepare:
+    name: Prepare
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    outputs:
+      packages: ${{ steps.affected.outputs.packages }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -49,11 +52,70 @@ jobs:
       - name: Set up NX SHAs for affected commands
         uses: nrwl/nx-set-shas@v4
 
-      - name: Lint
-        run: pnpm exec nx affected --target=lint --parallel=3
+      - name: Get affected packages
+        id: affected
+        run: |
+          PACKAGES=$(pnpm exec nx show projects --affected --json || echo '[]')
+          echo "packages=$PACKAGES" >> $GITHUB_OUTPUT
 
-      - name: Test
-        run: pnpm exec nx affected --target=test --parallel=3 --ci --coverage
+  ci:
+    name: ${{ matrix.package }} / ${{ matrix.target }}
+    needs: [prepare]
+    if: needs.prepare.outputs.packages != '[]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.prepare.outputs.packages) }}
+        target: [lint, test, build]
+        include:
+          - target: test
+            args: --ci --coverage
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Build
-        run: pnpm exec nx affected --target=build --parallel=3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: ${{ matrix.target }}
+        run: pnpm exec nx run ${{ matrix.package }}:${{ matrix.target }} ${{ matrix.args || '' }}
+
+  ci-pass:
+    name: CI Pass
+    needs: [prepare, ci]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Check all jobs passed
+        uses: re-actors/alls-green@release/v1
+        with:
+          allowed-skips: ci
+          jobs: ${{ toJSON(needs) }}
