@@ -1,0 +1,29 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "root"
+    },
+    {
+      "name": "example",
+      "path": "packages/example",
+    },
+    {
+      "name": "react-design-system",
+      "path": "packages/react-design-system",
+    }
+  ],
+  "settings": {
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint", // ESLint
+      "ms-vscode.vscode-typescript-next", // TypeScript
+      "esbenp.prettier-vscode", // Prettier
+      "ms-vsliveshare.vsliveshare", // Live Share
+      "msjsdiag.vscode-react-native", // React
+      "orta.vscode-jest", // Jest
+      "ms-azuretools.vscode-docker" // Docker
+    ]
+  }
+}
