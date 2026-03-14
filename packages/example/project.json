@@ -1,0 +1,47 @@
+{
+  "name": "@monorepo/example",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/example/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/example",
+        "tsConfig": "packages/example/tsconfig.lib.json",
+        "packageJson": "packages/example/package.json",
+        "main": "packages/example/src/index.ts",
+        "assets": ["packages/example/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/example/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/packages/example"],
+      "options": {
+        "jestConfig": "packages/example/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "conventional-commits",
+        "tagPrefix": "v",
+        "commitMessageFormat": "chore(release): {version} [skip ci]",
+        "push": true,
+        "pushToRemote": "origin",
+        "trackDeps": true,
+        "skipRootChangelog": false
+      }
+    }
+  }
+}
