@@ -1,3 +1,18 @@
+# Prompt Summary
+
+Set up a personal NX monorepo with the following characteristics:
+
+- **Language / Runtime:** TypeScript, Node.js 24 (pinned via `.nvmrc`)
+- **Package manager:** pnpm
+- **Quality tooling:** ESLint, Jest
+- **Versioning:** semantic versioning via NX with a universal monorepo tag
+- **Documentation:** `README.md` with Quickstart, installation instructions, technology summary with links, and links to individual package docs (no public contributions)
+- **Packaging:** Dockerfile per package, integrated with NX
+- **CI/CD:** GitHub Actions pipeline running lint, test, and build; automatic PR size labelling
+- **Example package:** a demo package that exercises all of the above tooling
+
+---
+
 # Original Prompt
 
 > I'd like to create an nx mono repo with Typescript, node 24 (with .nvmrc), pnpm, eslint, jest.
