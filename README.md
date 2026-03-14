@@ -7,6 +7,7 @@ A personal NX monorepo built with TypeScript, pnpm, ESLint, and Jest.
 | Package | Description | Documentation |
 |---------|-------------|---------------|
 | [@monorepo/example](./packages/example) | Example package (demonstrates monorepo toolchain) | [Docs](./packages/example/README.md) |
+| [@monorepo/react-design-system](./packages/react-design-system) | React 19 component library (Tailwind CSS, layout, buttons, inputs, icons, typography, tokens) | [Docs](./packages/react-design-system/README.md) |
 
 ## Quickstart
 
@@ -54,6 +55,8 @@ pnpm exec nx affected --target=test
 
 | Technology | Version | Documentation |
 |------------|---------|---------------|
+| [React](https://react.dev/) | 19.x | [React Docs](https://react.dev/learn) |
+| [Tailwind CSS](https://tailwindcss.com/) | 4.x | [Tailwind Docs](https://tailwindcss.com/docs) |
 | [NX](https://nx.dev) | 21.x | [NX Docs](https://nx.dev/getting-started/intro) |
 | [TypeScript](https://www.typescriptlang.org/) | 5.x | [TS Docs](https://www.typescriptlang.org/docs/) |
 | [Node.js](https://nodejs.org/) | 24.x | [Node Docs](https://nodejs.org/en/docs) |
