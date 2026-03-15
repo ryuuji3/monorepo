@@ -21,6 +21,12 @@
     },
     "sync": {
       "executor": "@nxtensions/astro:sync"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "options": {
+        "lintFilePatterns": ["packages/astro-app/**/*.{ts,tsx,js,jsx,astro}"]
+      }
     }
   },
   "tags": ["astro"]

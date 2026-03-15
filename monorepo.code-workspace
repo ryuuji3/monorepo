@@ -5,12 +5,16 @@
       "name": "root"
     },
     {
-      "name": "example",
+      "name": "@ryuuji3/example",
       "path": "packages/example",
     },
     {
-      "name": "react-design-system",
+      "name": "@ryuuji3/react-design-system",
       "path": "packages/react-design-system",
+    },
+    {
+      "name": "@ryuuji3/astro-app",
+      "path": "packages/astro-app",
     }
   ],
   "settings": {

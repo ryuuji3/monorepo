@@ -13,6 +13,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-astro": "^1.6.0",
     "typescript": "catalog:"
   }
 }
