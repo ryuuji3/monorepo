@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/react-design-system",
+  "name": "@ryuuji3/react-design-system",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/react-design-system/src",
   "projectType": "library",

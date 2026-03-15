@@ -1,5 +1,5 @@
 export default {
-  displayName: '@monorepo/example',
+  displayName: '@ryuuji3/example',
   preset: '../../jest.preset.js',
   testEnvironment: 'node',
   transform: {

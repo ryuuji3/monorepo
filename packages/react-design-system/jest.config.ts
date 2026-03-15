@@ -1,5 +1,5 @@
 export default {
-  displayName: '@monorepo/react-design-system',
+  displayName: '@ryuuji3/react-design-system',
   preset: '../../jest.preset.js',
   testEnvironment: 'jsdom',
   transform: {

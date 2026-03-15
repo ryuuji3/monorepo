@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/react-design-system",
+  "name": "@ryuuji3/react-design-system",
   "version": "0.0.1",
   "type": "commonjs",
   "main": "./dist/index.js",
@@ -19,20 +19,20 @@
     "lint": "eslint ."
   },
   "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwindcss": "^4.0.0"
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.6.0",
-    "@testing-library/react": "^16.0.0",
-    "@testing-library/user-event": "^14.5.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwindcss": "^4.0.0",
-    "tslib": "^2.0.0"
+    "@testing-library/jest-dom": "catalog:",
+    "@testing-library/react": "catalog:",
+    "@testing-library/user-event": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "jest-environment-jsdom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "tailwindcss": "catalog:",
+    "tslib": "catalog:"
   }
 }
